@@ -11,6 +11,7 @@ export const UserProvider = ({ children }) => {
   const { push } = useHistory()
   useEffect(() => {
     user ? setSocket(io.connect("http://localhost:3333")) : socket && socket.disconnect()
+    return () => socket && socket.disconnect()
   }, [user, setSocket])
   const login = (body) => {
     axios

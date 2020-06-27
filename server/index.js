@@ -38,6 +38,7 @@ massive({
   //Socket connection
   io.on("connection", (socket) => {
     console.log("User connected")
+    socket.on('disconnect', () => console.log("User disconnected"))
   })
 })
 
@@ -49,5 +50,5 @@ app.post("/auth/logout", authCtrl.logout)
 app.get("/auth/user", authMid.usersOnly, authCtrl.getUser)
 
 //Calendar Endpoints
-app.get('/api/dates', authMid.usersOnly, dateCtrl.getDates)
-app.post('/api/dates', authMid.usersOnly,  dateCtrl.updateDates)
+app.get('/api/dates', dateCtrl.getDates)
+app.post('/api/dates', dateCtrl.updateDates)

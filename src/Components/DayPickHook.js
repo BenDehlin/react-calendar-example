@@ -25,12 +25,20 @@ export const DayPickHook = () => {
     axios
       .get("/api/dates")
       .then((results) => {
-        // setSelectedDays(parseDate(results.data, FORMAT))
         setSelectedDays(results.data.map(e => parseDate(e, FORMAT)))
       })
       .catch((err) => console.log(err))
   }, [])
   const clickDay = (day, { selected }) => {
+    // setSelectedDays((days) => {
+    //   if (selected) {
+    //     const index = days.findIndex((e) => DateUtils.isSameDay(e, day))
+    //     days.splice(index, 1)
+    //   } else {
+    //     days.push(day)
+    //   }
+    //   return days
+    // })
     const days = [...selectedDays]
     if (selected) {
       const index = days.findIndex((e) => DateUtils.isSameDay(e, day))
@@ -44,11 +52,11 @@ export const DayPickHook = () => {
     axios
       .post("/api/dates", { selectedDays })
       .then((results) => {
+        console.log(results.data)
         setSelectedDays(results.data.map(e => parseDate(e, FORMAT)))
       })
       .catch((err) => console.log(err))
   }
-
   return (
     <div>
       <DayPicker
