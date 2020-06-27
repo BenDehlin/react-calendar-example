@@ -1,0 +1,1 @@
+select to_char("water_date", 'MM/DD/YYYY') from water_calendar;

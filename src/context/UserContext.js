@@ -9,7 +9,6 @@ export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null)
   const [socket, setSocket] = useState(null)
   const { push } = useHistory()
-  console.log(user)
   useEffect(() => {
     user ? setSocket(io.connect("http://localhost:3333")) : socket && socket.disconnect()
   }, [user, setSocket])

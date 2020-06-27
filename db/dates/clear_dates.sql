@@ -1,0 +1,1 @@
+DELETE FROM water_calendar where user_id = $1;

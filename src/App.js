@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react"
-import routes from "./routes"
-import Header from './Components/Header'
 import { UserContext } from "./context/UserContext"
+import Header from './Components/Header'
+import routes from './routes'
 
 function App() {
   const {getUser} = useContext(UserContext)
